@@ -1,10 +1,12 @@
 class DockingStation
-    def release_bike  
-        Bike.new
-end
-end
+    attr_reader :bike
 
+    def release_bike 
+        fail 'No bikes available' unless @bike
+        @bike
+    end
 
-docking_station = DockingStation.new
-bike = docking_station.release_bike
-puts bike.working?
+    def dock(bike)
+        @bike = bike
+    end
+end
